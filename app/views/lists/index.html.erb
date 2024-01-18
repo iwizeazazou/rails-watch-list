@@ -1,0 +1,24 @@
+<!-- app/views/lists/index.html.erb -->
+
+<h1>All Lists</h1>
+
+<% @lists.each do |list| %>
+  <div>
+    <h2><%= list.name %></h2>
+
+    <% if list.bookmarks.any? %>
+      <ul>
+        <% list.bookmarks.each do |bookmark| %>
+          <li>
+            <%= "Movie: #{bookmark.movie.title}, Comment: #{bookmark.comment}" %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No bookmarks for this list.</p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'New List', new_list_path %>
+
